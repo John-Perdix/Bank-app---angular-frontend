@@ -1,0 +1,22 @@
+<nz-layout>
+  <nz-header>
+    <div class="logo"><a [routerLink]="['/dashboard']"><img alt="Logo" src="../../assets/logo_white.png"></a></div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      <li nz-menu-item><a [routerLink]="['/dashboard']">Dashboard</a></li>
+      <li nz-menu-item><a [routerLink]="['/payment']">Payment</a></li>
+      <li nz-menu-item><a [routerLink]="['/transactions']">transactions</a></li>
+    </ul>
+  </nz-header>
+
+  <nz-content>
+
+    <router-outlet></router-outlet>
+
+<!--     <app-dashboard [firstFiveTransactions]="firstFiveTransactions"></app-dashboard>
+    <app-transactions [firstFiveTransactions]="firstFiveTransactions"></app-transactions> -->
+
+  </nz-content>
+
+  <nz-footer>Bank that robbes you with a <span nz-icon nzType="smile" nzTheme="outline"></span> ©2020 Implement By
+    Div.pt</nz-footer>
+</nz-layout>

@@ -1,0 +1,33 @@
+[nz-form] {
+    max-width: 600px;
+}
+
+.form-payment {
+    padding: 1em;
+    margin: 1em;
+
+    display: flex;
+    justify-content: center
+}
+
+nz-content {
+    margin: auto !important;
+}
+
+.form-payment-item {
+    min-width: 600px;
+    margin-top: 3em;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: #001529;
+}
+
+.logo{
+    width: 400px;
+    margin: auto;
+    margin-left: 70px;
+}

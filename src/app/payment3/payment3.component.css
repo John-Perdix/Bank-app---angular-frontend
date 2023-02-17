@@ -1,0 +1,36 @@
+[nz-form] {
+    max-width: 600px;
+  }
+
+  .form-payment{
+    padding: 1em;
+    margin: 1em;
+
+    display: flex;
+    justify-content: center
+  }
+
+  nz-content{
+    margin: auto !important;
+  }
+
+ /*  nz-form-label{
+    padding-right: 10em;
+    text-align: right !important;
+  } */
+
+.form-payment-item{
+  min-width: 600px;
+  margin-top: 3em;
+}
+
+h1{
+  font-weight: 700;
+  font-size: 35px;
+  margin-bottom: 30px;
+  color: #001529;
+}
+
+nz-date-picker {
+  margin: 0 8px 12px 0;
+}

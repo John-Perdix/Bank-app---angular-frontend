@@ -1,0 +1,39 @@
+.bank_logo {
+    color: white;
+    
+}
+
+.logo {
+    width: 120px;
+    height: 31px;
+    margin: -4px 24px 16px 0;
+    float: left;
+  }
+
+  .logo img{
+    display: block;
+    z-index: 1000;
+    width: 120px;
+  }
+
+  [nz-menu] {
+    line-height: 64px;
+  }
+
+  nz-breadcrumb {
+    margin: 16px 0;
+  }
+
+  nz-content {
+    padding: 0 50px;
+  }
+
+  nz-footer {
+    text-align: center;
+  }
+
+  .inner-content {
+    background: #fff;
+    padding: 24px;
+    min-height: 280px;
+  }

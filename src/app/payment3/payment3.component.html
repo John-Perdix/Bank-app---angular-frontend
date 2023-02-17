@@ -1,0 +1,91 @@
+
+<div class="form-payment">
+    <form class="form-payment" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div class="form-payment-item">
+            <h1>Payment</h1>
+
+            <!-- Name -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzFor="nickname" nzRequired><span>Name</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your nickname!">
+                    <input nz-input id="nickname" formControlName="nickname" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <!-- Account -->
+            <nz-form-item>
+                <nz-form-label nzRequired [nzSpan]="5">Account number</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSm]="14" [nzXs]="24" [nzErrorTip]="combineTpl">
+                    <input (focus)="addSpace()" id="input_n" nz-input formControlname="account" minlength="16"
+                        maxlength="22" required />
+                    <ng-template #combineTpl let-control>
+                        <ng-container *ngIf="control.hasError('maxlength')">MaxLength is 12</ng-container>
+                        <ng-container *ngIf="control.hasError('minlength')">MinLength is 6</ng-container>
+                        <ng-container *ngIf="control.hasError('required')">Input is required</ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <!-- Amount -->
+            <nz-form-item>
+                <nz-form-label nzRequired [nzSpan]="5">Amount</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSm]="14" [nzXs]="24" [nzErrorTip]="combineTpl">
+                    <nz-space nzDirection="vertical" style="width: 100%">
+                        <nz-input-number-group *nzSpaceItem nzPrefix="€" style="width: 100%">
+                            <nz-input-number [nzStep]="1"></nz-input-number>
+                        </nz-input-number-group>
+                    </nz-space>
+                    <ng-template #combineTpl let-control>
+                        <ng-container *ngIf="control.hasError('maxlength')">MaxLength is 12</ng-container>
+                        <ng-container *ngIf="control.hasError('minlength')">MinLength is 6</ng-container>
+                        <ng-container *ngIf="control.hasError('required')">Input is required</ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+
+            <!-- Description -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>Description</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <textarea rows="4" formControlName="description" nz-input [(ngModel)]="inputValue"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <!-- Date -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>DatePicker</nz-form-label>
+                <nz-form-control [nzSm]="16" [nzXs]="24">
+                    <nz-date-picker formControlName="datePicker"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- Terms and conditions -->
+        <div class="form-payment-item">
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                <h2>The easiest way for us to rob you</h2>
+                <h3>Do you agree to getting robbed?</h3>
+                <label nz-checkbox formControlName="agree">
+                    <span>
+                        Terms and conditions that you'll never read and we'll never
+            tell you to. But here it is:
+                    </span>
+                </label>
+                <a href="/terms">Terms and conditions.</a>
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Submit button -->
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                <button nz-button nzType="primary">Register</button>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    </form>
+
+</div>

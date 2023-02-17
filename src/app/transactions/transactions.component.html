@@ -1,0 +1,35 @@
+<div class="inner-content">
+    <nz-table #basicTable>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Acount</th>
+                <th>amount</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+        </thead><!-- *ngFor="let transaction of transactions.slice(0, 5);" -->
+        <tbody>
+            <tr class="all_items" *ngFor="let transaction of transactions">
+                <td>{{ transaction.name }}</td>
+                <td>{{ transaction.account }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.description }}</td>
+                <td>{{ transaction.date | date:'mediumDate'}}</td>
+                <td>
+
+
+<!--             <tr class="five_items" *ngFor="let transaction of firstFiveTransactions">
+                <td>{{ transaction.name }}</td>
+                <td>{{ transaction.account }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.description }}</td>
+                <td>{{ transaction.date | date:'mediumDate'}}</td>
+                <td> -->
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a nz-button (click)="deleteTransaction('id')" nzType="link">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

@@ -1,0 +1,78 @@
+/* Avatar */
+
+nz-avatar {
+/*     margin-top: 16px;
+    margin-right: 16px; */
+    margin: 16px;
+  }
+
+  .avatar{
+    width:60%; 
+    border-radius:10em;
+  }
+
+  .label{
+    margin-top: -15px;
+    color: #727272;
+  }
+
+  button{
+    margin-bottom: 2em;
+    width: max-content;
+  }
+
+  .profile{
+    display: flex;
+  }
+
+  .profile-item{
+    margin: auto;
+    padding: 1em;
+
+    text-align: center;
+
+  }
+
+  .profile-item h1{
+    font-weight: 700;
+    font-size: 3em;
+  }
+
+  .card-profile{
+    display: flex;
+    width: 100%;
+  }
+
+  .card-profile{
+    background: #ECECEC;padding:30px;
+  }
+
+  nz-card{
+    width:300px;
+  }
+
+  app-chart{
+    width: 100%;
+    margin: 16px;
+  }
+
+  svg{
+    position: absolute;
+    margin-left: -25px;
+    bottom: 0;
+  }
+
+  svg path{
+    transition: 350ms;
+    transition-timing-function: cubic-bezier(.77, 0, .18, 1);
+  }
+
+  svg:hover path{
+    transition: 350ms;
+    transition-timing-function: cubic-bezier(.77, 0, .18, 1);
+    d: path("M0,0L48,42.7C96,85,192,171,288,197.3C384,224,480,192,576,160C672,128,768,96,864,112C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z");
+  }
+
+  .all_items{
+    display: none;
+}

@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.login-form {
+    max-width: 405px;
+  }
+
+  .ant-input-prefix{
+    display: inline-block;
+  }
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+
+  [nz-menu] {
+    width: 240px;
+    display: inline;
+  }
+
+  .login{
+    margin: auto;
+    align-items: center;
+  }
+
+  .password_number{
+    display: inline;
+  }
+
+  .password_number input {
+    width: 30px;
+    margin: 2px;
+  }
+
+  .footer{
+    background-color: #1890ff;
+    bottom: 0;
+    color: #ffff;
+    padding: 5px;
+  }
