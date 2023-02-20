@@ -38,15 +38,18 @@ export class LoginComponent {
     });
   }
 
+  onDigitInput(event){
 
-  onDigitInput(event: any, previousElement: any, nextElement: any): void {
-    if (event.code !== 'Backspace' && nextElement !== null) {
-      nextElement.focus();
-    }
-
-    if (event.code === 'Backspace' && previousElement !== null) {
-      previousElement.focus();
-      previousElement.value = '';
-    }
-  }
+    let element;
+    if (event.code !== 'Backspace')
+         element = event.srcElement.nextElementSibling;
+ 
+     if (event.code === 'Backspace')
+         element = event.srcElement.previousElementSibling;
+ 
+     if(element == null)
+         return;
+     else
+         element.focus();
+ }
 }
