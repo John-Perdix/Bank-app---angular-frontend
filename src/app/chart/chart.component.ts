@@ -14,6 +14,8 @@ export class ChartComponent {
   public chart: any;
 
   createChart(){
+
+   
   
     this.chart = new Chart("MyChart", {
       type: 'line', //this denotes tha type of chart

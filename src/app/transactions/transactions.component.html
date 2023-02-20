@@ -1,22 +1,63 @@
+<nz-page-header
+class="site-page-header"
+onclick="history.back()"
+nzBackIcon
+[nzTitle]="titleHeader"
+></nz-page-header>
+<ng-template #titleHeader><fa-icon [icon]="faMoneyBillTransfer"></fa-icon> Transactions</ng-template>
+
 <div class="inner-content">
-    <nz-table #basicTable>
+    <nz-table #basicTable [nzData]="transactions">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Acount</th>
-                <th>amount</th>
+                <th>Amount</th>
                 <th>Description</th>
                 <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead><!-- *ngFor="let transaction of transactions.slice(0, 5);" -->
         <tbody>
             <tr class="all_items" *ngFor="let transaction of transactions">
                 <td>{{ transaction.name }}</td>
                 <td>{{ transaction.account }}</td>
-                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.amount }} €</td>
                 <td>{{ transaction.description }}</td>
                 <td>{{ transaction.date | date:'mediumDate'}}</td>
+               
+                <td *ngIf="transaction.statusText=='Sent'" else="elsif1"><nz-tag nz-popover nzPopoverTitle="Sent" nzPopoverContent="This was a transaction sent to {{ transaction.name }}" nzColor="error"><fa-icon [icon]="faPaperPlane"></fa-icon></nz-tag></td>
+                <td *ngIf="transaction.statusText=='Pending'"><nz-tag nz-popover nzPopoverTitle="Sent" nzPopoverContent="This was a transaction still pending made with {{ transaction.name }}" nzColor="processing"><fa-icon [icon]="faClockRotateLeft"></fa-icon></nz-tag></td>
+                <td *ngIf="transaction.statusText=='Recived'"><nz-tag nz-popover nzPopoverTitle="Sent" nzPopoverContent="This was a transaction Recieved from {{ transaction.name }}" nzColor="success"><fa-icon class="Recived" [icon]="faRightToBracket"></fa-icon></nz-tag></td>
+                
                 <td>
+                    <button nz-button nzType="primary" (click)="showModal()" nzType="default" nzDanger>
+                        <span>Delete</span>
+                      </button>
+                      <nz-modal
+                        [(nzVisible)]="isVisible"
+                        [nzTitle]="modalTitle"
+                        [nzContent]="modalContent"
+                        [nzFooter]="modalFooter"
+                        (nzOnCancel)="handleCancel()"
+                        NzModalService.error
+                        nzMaskOpacity="0.3"
+                      >
+                        <ng-template #modalTitle>Confirm Delete</ng-template>
+                  
+                        <ng-template #modalContent>
+                          <p>Are you sure you want to delete this transaction?</p>
+                        </ng-template>
+                  
+                        <ng-template #modalFooter>
+                          <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+                          <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading" (click)="deleteTransaction('id')" nz-button nzType="default" nzDanger>Delete</button>
+                        </ng-template>
+                      </nz-modal>
+                </td>
+                <!-- <td><button (click)="deleteTransaction('id')" nz-button nzType="default" nzDanger>Delete</button></td> -->
+                    
 
 
 <!--             <tr class="five_items" *ngFor="let transaction of firstFiveTransactions">
@@ -26,9 +67,7 @@
                 <td>{{ transaction.description }}</td>
                 <td>{{ transaction.date | date:'mediumDate'}}</td>
                 <td> -->
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <a nz-button (click)="deleteTransaction('id')" nzType="link">Delete</a>
-                </td>
+                
             </tr>
         </tbody>
     </nz-table>

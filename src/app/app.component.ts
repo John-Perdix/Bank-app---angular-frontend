@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { TransactionsServiceService } from './Services/transactions-service.service';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillTransfer, faMoneyBillTrendUp} from '@fortawesome/free-solid-svg-icons';
 
 export interface transactions {
   id: string,
@@ -20,6 +23,11 @@ export interface transactions {
 export class AppComponent{
 
   firstFiveTransactions: transactions[] = [];
+  searcher =  TransactionsServiceService;
+
+  faChartLine=faChartLine;
+  faMoneyBillTrendUp=faMoneyBillTrendUp;
+  faMoneyBillTransfer=faMoneyBillTransfer;
 
   title = 'app';
 }

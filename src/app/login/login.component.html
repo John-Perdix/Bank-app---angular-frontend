@@ -2,44 +2,34 @@
     <div class="login" nz-col [nzSpan]="8">
         <img class="logo" alt="Logo" src="../../assets/logo_black.png">
         <h1>Enter your</h1>
-        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <form nz-form [formGroup]="validateForm" class="login-form" onsubmit="concatenatedPassword()" (ngSubmit)="submitForm()">
+            <!-- USERNAME -->
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your username!">
                     <nz-input-group nzPrefixIcon="user">
-                        <input type="text" nz-input formControlName="userName" placeholder="Username" />
+                        <input (focus)="userpassword()" type="text" nz-input formControlName="userName" placeholder="Username" />
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your Password!">
                     <nz-input-group nzPrefixIcon="lock">
+
+                        <!-- PASSWORD -->
                         <div class="password_number">
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input id="n_input" formControlName="password" placeholder=" "
-                                maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <input (keyup)="onDigitInput($event)" type="password" nz-input formControlName="password" placeholder=" " maxlength="1"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                            <input 
+                            *ngFor="let i of userpassword() let idx = index"
+                            [disabled]="idx >= userpassword().length / 2 ? true : false"
+                            (keyup)="onDigitInput($event)"
+                            type="password" nz-input
+                            formControlName="password" placeholder="*" maxlength="1"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                         </div>
+
                     </nz-input-group>
                 </nz-form-control>
+
+                <!-- REMENBER ME BUTTON -->
             </nz-form-item>
             <div nz-row class="login-form-margin">
                 <div nz-col [nzSpan]="12">
@@ -47,10 +37,13 @@
                         <span>Remember me</span>
                     </label>
                 </div>
+                <!-- FORGOT PASSWORD BUTTON -->
                 <div nz-col [nzSpan]="12">
                     <a class="login-form-forgot">Forgot password</a>
                 </div>
             </div>
+
+            <!-- SUBMIT BUTTON -->
             <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
             Or
             <a>register now!</a>

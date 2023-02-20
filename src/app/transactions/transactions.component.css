@@ -1,3 +1,14 @@
-.five_items{
-    display: none;
+.cdk-overlay-backdrop{
+    opacity: 0.3 !important;
+    background-color: rgba(0,0,0,.0001) !important;
+}
+
+.cdk-overlay-backdrop-showing{
+    opacity: 0.3 !important;
+    background-color: rgba(0,0,0,.0001) !important;
+}
+
+.cdk-overlay-container{
+    opacity: 0.3;
+    background-color: rgba(0,0,0,.0001) !important;
 }

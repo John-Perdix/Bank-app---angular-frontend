@@ -48,3 +48,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #ffff;
     padding: 5px;
   }
+
+  fa-icon{
+    margin-right: 5px;
+  }
+
+/*   .ant-btn-primary {
+    background-color: #7426b4;
+  } */

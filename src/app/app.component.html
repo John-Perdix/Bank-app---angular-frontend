@@ -2,9 +2,9 @@
   <nz-header>
     <div class="logo"><a [routerLink]="['/dashboard']"><img alt="Logo" src="../../assets/logo_white.png"></a></div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal">
-      <li nz-menu-item><a [routerLink]="['/dashboard']">Dashboard</a></li>
-      <li nz-menu-item><a [routerLink]="['/payment']">Payment</a></li>
-      <li nz-menu-item><a [routerLink]="['/transactions']">transactions</a></li>
+      <li nz-menu-item><a [routerLink]="['/dashboard']"><fa-icon [icon]="faChartLine"></fa-icon> Dashboard</a></li>
+      <li nz-menu-item><a [routerLink]="['/payment']"><fa-icon [icon]="faMoneyBillTrendUp"></fa-icon> Payment</a></li>
+      <li nz-menu-item><a [routerLink]="['/transactions']"><fa-icon [icon]="faMoneyBillTransfer"></fa-icon> Transactions</a></li>
     </ul>
   </nz-header>
 

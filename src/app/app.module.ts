@@ -20,6 +20,14 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -43,6 +51,9 @@ import { ChartComponent } from './chart/chart.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { Payment3Component } from './payment3/payment3.component';
 import { TermsComponent } from './terms/terms.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TRANSACTIONS_SERVICE, TransactionsServiceService } from './Services/transactions-service.service';
+
 
 
 @NgModule({
@@ -81,11 +92,22 @@ import { TermsComponent } from './terms/terms.component';
     HttpClientModule,
     NzSelectModule,
     NzSpaceModule,
+    NzPageHeaderModule,
+    NzPaginationModule,
+    FontAwesomeModule,
+    NzTagModule,
+    NzPopoverModule,
+    NzModalModule,
+    NzCarouselModule,
+    NzStatisticModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, 
+    useValue: en_US},
+    {
+    provide: TRANSACTIONS_SERVICE,
+    useClass:  TransactionsServiceService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 
 

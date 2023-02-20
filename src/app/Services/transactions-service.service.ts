@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { faPaperPlane, faClockRotateLeft, faInbox, faRightToBracket, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
+import { Injectable, InjectionToken, OnInit } from '@angular/core';
 
 
 export interface transactions {
@@ -22,49 +20,29 @@ export interface firstFiveTransactions {
   date: Date
 }
 
-/* enum Status {
+enum Status {
   Pending = 'Pending',
-  Sent = 'Sent <fa-icon [icon]="faPaperPlane"></fa-icon>',
+  Sent = '<nz-tag nzColor="success">success</nz-tag>',
   Received = 'Received'
-} */
-
-export const Status = {
-  Pending: {text: 'Pending', icon: ''},
-  Sent: {text: 'Sent', icon: ''},
-  Received: {text: 'Recived', icon: ''}
-};
-
-@Injectable({
-  providedIn: 'root',
-})
-
-@Component({
-  selector: 'app-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css']
-})
+}
 
 
+@Injectable({providedIn: 'root'})
 
+export class TransactionsServiceService implements OnInit{
 
-export class TransactionsComponent implements OnInit {
   names = ['João', 'Bruno', 'Daniel', 'Vasco', 'Adriano Silveira', 'Magda Gonsalves', 'Cesária Resende', 'Cecília Azevedo', 'Jacinta Bento', 'Renata Dias', 'Jessica Braga', 'Cesária Resende', 'Rúben Branco', 'Osvaldo Magalhães', 'Ciríaco Sá', 'Artur Torres'];
   transactions: any[] = [];
-  @Input() firstFiveTransactions: any[];
+  firstFiveTransactions: any[];
   descriptions = ['This transaction was made in a bussiness context', 'This was a personal transaction', 'This was a commercial transaction', 'This was a transaction for traveling porpuses'];
-  sent="Sent <fa-icon [icon]='faPaperPlane'></fa-icon>";
-  
+
   ngOnInit() {
     this.generateRandomTransactions();
   }
 
-
-  //ICONS
-  faPaperPlane = faPaperPlane;
-  faClockRotateLeft = faClockRotateLeft;
-  faInbox = faInbox;
-  faRightToBracket = faRightToBracket;
-  faMoneyBillTransfer = faMoneyBillTransfer;
+  constructor(
+    private transactionsServiceService: TransactionsServiceService
+  ) {}
 
   generateRandomTransactions() {
     for (let i = 0; i < 100; i++) {
@@ -80,41 +58,12 @@ export class TransactionsComponent implements OnInit {
         description: this.descriptions[descriptionIndex],
         amount: Math.floor(Math.random() * 1000),
         date: new Date(Date.now() - Math.floor(Math.random() * 10000000000)),
-        statusText: status.text,
-        statusIcon: status.icon
+        status: status
       };
       this.transactions.push(transaction);
     }
     this.firstFiveTransactions = this.transactions.slice(0, 5);
   }
-
-  deleteTransaction(id) {
-    this.transactions.splice(id, 1);
-    console.log(id);
-    console.log('deleteTransaction was called');
-  }
-
-
-  //MODAL
-  isVisible = false;
-  isConfirmLoading = false;
-
-  constructor() {}
-
-  showModal(): void {
-    this.isVisible = true;
-  }
-
-  handleOk(): void {
-    this.isConfirmLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isConfirmLoading = false;
-    }, 1000);
-  }
-
-  handleCancel(): void {
-    this.isVisible = false;
-  }
-
 }
+
+export const TRANSACTIONS_SERVICE = new InjectionToken('TransactionsService');

@@ -31,3 +31,7 @@ h1 {
     margin: auto;
     margin-left: 20px;
 }
+
+nz-input-group{
+    align-items: center
+}
