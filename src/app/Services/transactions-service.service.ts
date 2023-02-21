@@ -1,6 +1,7 @@
 import { Injectable, InjectionToken, OnInit } from '@angular/core';
 
 
+
 export interface transactions {
   getTransactions(): unknown;
   id: string,
@@ -63,6 +64,12 @@ export class TransactionsServiceService implements OnInit{
       this.transactions.push(transaction);
     }
     this.firstFiveTransactions = this.transactions.slice(0, 5);
+  }
+
+  deleteTransaction(id) {
+    this.transactions.splice(id, 1);
+    console.log(id);
+    console.log('deleteTransaction was called');
   }
 }
 

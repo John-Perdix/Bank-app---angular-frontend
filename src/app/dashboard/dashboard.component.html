@@ -1,56 +1,318 @@
 <!-- LAYOUT -->
 
-<nz-page-header
-class="site-page-header"
-onclick="history.back()"
-nzBackIcon
-[nzTitle]="titleHeader"
-nzSubtitle="My Account"
-></nz-page-header>
-<ng-template #titleHeader><fa-icon [icon]="faChartLine"></fa-icon>Dashboard</ng-template>
-<div class="card-profile">
-    <div class="profile">
-        <nz-card [nzBordered]="false" [nzTitle]="titleTemplate" [nzExtra]="extraTemplate">
-            <div  class="profile-item">
-                <nz-carousel nzAutoPlay>
-                    <div nz-carousel-content *ngFor="let card of cards">
-                      <img alt="credit card" src="{{ card.path }}">
+<div class="inner-content">
+
+    <nz-page-header class="site-page-header" onclick="history.back()" nzBackIcon [nzTitle]="titleHeader"
+        nzSubtitle="My Account"></nz-page-header>
+    <ng-template #titleHeader><fa-icon [icon]="faChartLine"></fa-icon>Dashboard</ng-template>
+
+    <div class="card-profile">
+        <div class="profile">
+            <nz-card [nzBordered]="false" [nzTitle]="titleTemplate" [nzExtra]="extraTemplate">
+                <div class="profile-item">
+                    <nz-carousel nzAutoPlay>
+                        <div nz-carousel-content *ngFor="let card of cards">
+                            <img alt="credit card" src="{{ card.path }}">
+                        </div>
+                    </nz-carousel>
+                    <!-- <h2>My Profile</h2> -->
+
+                    <!-- BASIC INFO -->
+
+                        <nz-row [nzGutter]="16">
+                            <nz-col [nzSpan]="12">
+                              <nz-statistic nzPrefix="€" [nzValue]="(3.20 | number)!" [nzTitle]="'Balance'"></nz-statistic>
+                            </nz-col>
+                            <nz-col [nzSpan]="12">
+                                <nz-statistic [nzValueTemplate]="template_trafic" [nzTitle]="'Trafic/Week'"></nz-statistic>
+                                <ng-template #template_trafic>
+                                    <nz-tag nz-popover nzPopoverTitle="Trafic/Week" nzPopoverContent="You lost 2.68% of your balance this week" [nzColor]="'red'">-2.68</nz-tag>
+                                </ng-template>
+                            </nz-col>
+                          </nz-row>
+
+                </div>
+                <div class="profile-item">
+
+                   <!--  PLANING -->
+                    <div class="planing">
+                        <h2><fa-icon [icon]="faMapLocationDot"></fa-icon> Planing</h2>
+                        <span class="label">Buy a car</span>
+                        <nz-progress nzType="line" [nzStrokeWidth]="15" [nzPercent]="35"></nz-progress>
+
+                        <span class="label">Buy a console</span>
+                        <nz-progress [nzStrokeWidth]="15" [nzPercent]="82"></nz-progress>
+
+                        <span class="label">Invest in a business</span>
+                        <nz-progress [nzStrokeWidth]="15" [nzPercent]="14"></nz-progress>
+
+                        <!-- CARD BUTTONS -->
                     </div>
-                  </nz-carousel>
+                    <div class="card_buttons">
+                    <button onclick="window.location= '/payment'" nz-button nzType="primary"><fa-icon
+                            [icon]="faMoneyBillTrendUp"></fa-icon>Make a payment</button>
+                    <button onclick="window.location= '/'" nz-button nzType="default"><fa-icon
+                            [icon]="faRightFromBracket"></fa-icon>Sign out</button>
+                    <!-- <p class="label"><fa-icon
+                        [icon]="faVault"></fa-icon> Your trust worthy bank ©2020</p> -->
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill="#0099ff" fill-opacity="1"
+                        d="M0,192L48,176C96,160,192,128,288,106.7C384,85,480,75,576,106.7C672,139,768,213,864,213.3C960,213,1056,139,1152,112C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
+            </nz-card>
+
+            <ng-template #titleTemplate>
+                <img alt="Profile picture" class="avatar" src="../../assets/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png">
+            </ng-template>
+
+            <ng-template #extraTemplate>
+                <a href="/transactions"><fa-icon [icon]="faMoneyBillTransfer"></fa-icon>All Transactions</a>
+            </ng-template>
+        </div>
+
+
+
+
+        <div class="profile profile-item2">
+
+            <!-- CARDS IN CENTER -->
+            <div class="cards">
+                <div>
+                    <div style="background: #ECECEC;">
+                        <nz-card style="width:300px;" [nzBordered]="false" [nzTitle]="title1"
+                            [nzExtra]="extraTemplate2">
+
+                            <nz-row [nzGutter]="16">
+                                <nz-col [nzSpan]="12">
+                                    <nz-statistic [nzValue]="(3.20 | number)!" [nzTitle]="'Balance'"
+                                        [nzPrefix]="iconprefix"></nz-statistic>
+                                    <nz-tag nz-popover nzPopoverTitle="balance" nzPopoverContent="You lost 200% of your balance" [nzColor]="'red'">-200%</nz-tag>
+                                    <ng-template #prefixTpl><span nz-icon nzType="like"></span></ng-template>
+                                </nz-col>
+                            </nz-row>
+                        </nz-card>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: #ECECEC;">
+                        <nz-card style="width:300px;" [nzBordered]="false" [nzTitle]="title2"
+                            [nzExtra]="extraTemplate3">
+                            <nz-row [nzGutter]="16">
+                                <nz-col [nzSpan]="12">
+                                    <nz-statistic [nzValue]="(1050 | number)!" [nzTitle]="'Income'"
+                                        [nzPrefix]="iconprefix"></nz-statistic>
+                                    <nz-tag nz-popover nzPopoverTitle="Income" nzPopoverContent="Your income has incrised 10.67%" [nzColor]="'green'">10.67%</nz-tag>
+                                    <ng-template #prefixTpl><span nz-icon nzType="like"></span></ng-template>
+                                </nz-col>
+                            </nz-row>
+                        </nz-card>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: #ECECEC;">
+                        <nz-card style="width:300px;" [nzBordered]="false" [nzTitle]="title3"
+                            [nzExtra]="extraTemplate4">
+                            <nz-row [nzGutter]="16">
+                                <nz-col [nzSpan]="12">
+                                    <nz-statistic [nzValue]="(0.35 | number)!" [nzTitle]="'Savings'"
+                                        [nzPrefix]="iconprefix"></nz-statistic>
+                                    <nz-tag nzPopoverTitle="Savings" nzPopoverContent="Your savings have incriesed 5.23" [nzColor]="'yellow'">5.23%</nz-tag>
+                                    <ng-template #prefixTpl><span nz-icon nzType="like"></span></ng-template>
+                                </nz-col>
+                            </nz-row>
+                        </nz-card>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: #ECECEC;">
+                        <nz-card style="width:300px;" [nzBordered]="false" [nzTitle]="title4"
+                            [nzExtra]="extraTemplate5">
+                            <nz-row [nzGutter]="16">
+                                <nz-col [nzSpan]="12">
+                                    <nz-statistic [nzValue]="(1128 | number)!" [nzTitle]="'Expenses'"
+                                        [nzPrefix]="iconprefix"></nz-statistic>
+                                    <nz-tag nzPopoverTitle="Expenses" nzPopoverContent="Your expensed have droped 43.3%" [nzColor]="'green'">-43.3%</nz-tag>
+                                    <ng-template #prefixTpl><span nz-icon nzType="like"></span></ng-template>
+                                </nz-col>
+                            </nz-row>
+                        </nz-card>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: #ECECEC;">
+                        <nz-card style="width:300px;" [nzBordered]="false" [nzTitle]="title5"
+                            [nzExtra]="extraTemplate6">
+                            <nz-row [nzGutter]="16">
+                                <nz-col [nzSpan]="12">
+                                    <nz-statistic [nzValue]="(3012 | number)!" [nzTitle]="'Crypto Currency'"
+                                        [nzPrefix]="iconprefix"></nz-statistic>
+                                    <nz-tag nzPopoverTitle="Crypto balance" nzPopoverContent="Your crypto currency balance has droped 70.54" [nzColor]="'red'">-70.54%</nz-tag>
+                                    <ng-template #prefixTpl><span nz-icon nzType="like"></span></ng-template>
+                                </nz-col>
+                            </nz-row>
+                        </nz-card>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE FOR TRHEE DOTS AND POPUP -->
+                <ng-template #extraTemplate2>
+
+                    <button
+                    nz-button
+                    nzType="text"
+                    nz-popover
+                    
+                    [(nzPopoverVisible)]="visible"
+                    (nzPopoverVisibleChange)="change($event)"
+                    nzPopoverTrigger="click"
+                    [nzPopoverContent]="contentTemplate"
+                  ><fa-icon class="big_icon" [icon]="faEllipsis"></fa-icon></button>
+
+                    <ng-template #contentTemplate>
+                        <a>Change currency</a>
+                        <br>
+                        <a>Settings</a>
+                    </ng-template>
+                </ng-template>
+
+                <ng-template #extraTemplate3>
+
+                    <button
+                    nz-button
+                    nzType="text"
+                    nz-popover
+                    
+                    [(nzPopoverVisible)]="visible1"
+                    (nzPopoverVisibleChange)="change($event)"
+                    nzPopoverTrigger="click"
+                    [nzPopoverContent]="contentTemplate"
+                  ><fa-icon class="big_icon" [icon]="faEllipsis"></fa-icon></button>
+
+                    <ng-template #contentTemplate>
+                        <a>Change currency</a>
+                        <br>
+                        <a>Settings</a>
+                    </ng-template>
+                </ng-template>
+
+
+                <ng-template #extraTemplate4>
+
+                    <button
+                    nz-button
+                    nzType="text"
+                    nz-popover
+                    
+                    [(nzPopoverVisible)]="visible2"
+                    (nzPopoverVisibleChange)="change($event)"
+                    nzPopoverTrigger="click"
+                    [nzPopoverContent]="contentTemplate"
+                  ><fa-icon class="big_icon" [icon]="faEllipsis"></fa-icon></button>
+
+                    <ng-template #contentTemplate>
+                        <a>Change currency</a>
+                        <br>
+                        <a>Settings</a>
+                    </ng-template>
+                </ng-template>
+
+
+                <ng-template #extraTemplate5>
+
+                    <button
+                    nz-button
+                    nzType="text"
+                    nz-popover
+                    
+                    [(nzPopoverVisible)]="visible3"
+                    (nzPopoverVisibleChange)="change($event)"
+                    nzPopoverTrigger="click"
+                    [nzPopoverContent]="contentTemplate"
+                  ><fa-icon class="big_icon" [icon]="faEllipsis"></fa-icon></button>
+
+                    <ng-template #contentTemplate>
+                        <a>Change currency</a>
+                        <br>
+                        <a>Settings</a>
+                    </ng-template>
+                </ng-template>
+
+
+                <ng-template #extraTemplate6>
+
+                    <button
+                    nz-button
+                    nzType="text"
+                    nz-popover
+                    
+                    [(nzPopoverVisible)]="visible4"
+                    (nzPopoverVisibleChange)="change($event)"
+                    nzPopoverTrigger="click"
+                    [nzPopoverContent]="contentTemplate"
+                  ><fa-icon class="big_icon" [icon]="faEllipsis"></fa-icon></button>
+
+                    <ng-template #contentTemplate>
+                        <a>Change currency</a>
+                        <br>
+                        <a>Settings</a>
+                    </ng-template>
+                </ng-template>
+
+
+
+                <ng-template #title1>
+                    <fa-icon class="big_icon" [icon]="faWallet"></fa-icon>
+                </ng-template>
+
+                <ng-template #title2>
+                    <fa-icon class="big_icon" [icon]="faHandHoldingDollar"></fa-icon>
+                </ng-template>
+
+                <ng-template #title3>
+                    <fa-icon class="big_icon" [icon]="faPiggyBank"></fa-icon>
+                </ng-template>
+
+                <ng-template #title4>
+                    <fa-icon class="big_icon" [icon]="faReceipt"></fa-icon>
+                </ng-template>
+
+                <ng-template #title5>
+                    <fa-icon class="big_icon" [icon]="faBitcoinSign"></fa-icon>
+                </ng-template>
+
+
+                <ng-template #iconprefix>
+                    <fa-icon [icon]="faEuroSign"></fa-icon>
+                </ng-template>
             </div>
-            <div class="profile-item">
-                <h1>€ 3.20</h1>
-                <p class="label">Current balance</p>
-                <button  onclick="window.location= '/payment'" nz-button nzType="primary"><fa-icon [icon]="faMoneyBillTrendUp"></fa-icon>Make a payment</button>
-                <button  onclick="window.location= '/'" nz-button nzType="default"><fa-icon [icon]="faRightFromBracket"></fa-icon>Sign out</button>
-                <p>Welcome, I think you are a little broke, and we will steal you the rest</p>
+
+            <div class="chart">
+                <div class="header_chart"> <fa-icon [icon]="faMoneyBill1Wave"></fa-icon>Money flow</div>
+                <ng-template #titleHeaderchart><fa-icon [icon]="faMoneyBill1Wave"></fa-icon>Money flow</ng-template>
+                <app-chart></app-chart>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,106.7C384,85,480,75,576,106.7C672,139,768,213,864,213.3C960,213,1056,139,1152,112C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-        </nz-card>
+        </div>
     </div>
-    <app-chart></app-chart>
-</div>
-<ng-template #titleTemplate>
-    <img alt="Profile picture" class="avatar" src="../../assets/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png">
-</ng-template>
 
-<ng-template #extraTemplate>
-    <a href="/transactions"><fa-icon [icon]="faMoneyBillTransfer"></fa-icon>All Transactions</a>
-</ng-template>
 
-<div class="inner-content">
 
-<div class="inner-content">
     <nz-table #basicTable [nzData]="firstFiveTransactions">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Acount</th>
-                <th>amount</th>
+                <th>Amount</th>
                 <th>Description</th>
                 <th>Date</th>
             </tr>
-        </thead>  
+        </thead>
         <tbody>
             <tr *ngFor="let transaction of firstFiveTransactions">
                 <td>{{ transaction.name }}</td>
@@ -60,9 +322,11 @@ nzSubtitle="My Account"
                 <td>{{ transaction.date | date:'mediumDate'}}</td>
                 <td>
                     <nz-divider nzType="vertical"></nz-divider>
-                    <a nz-button (click)="deleteTransaction('id')" nzType="link">Delete</a>
+                    <a nz-button nzType="link">Delete</a>
                 </td>
             </tr>
         </tbody>
     </nz-table>
+
+
 </div>

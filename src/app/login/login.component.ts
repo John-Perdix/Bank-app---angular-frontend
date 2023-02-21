@@ -20,25 +20,39 @@ export const Status = {
 })
 export class LoginComponent {
   validateForm!: UntypedFormGroup;
+  joinedPassword= '';
 
   userpassword(){
     const userName = this.validateForm.get('userName').value;
     const foundUser = this.users.find(user => user.userName === userName);
 
     if (foundUser) {
-      return new Array(foundUser.password.length);
+      const passwordArray = new Array(foundUser.password.length);
+      return passwordArray;
+
     } else {
       return [];
     }
-    
   }
-  joinedPassword ='';
   
+  concatenatedPassword(): void {
+    for (let i=0; i<this.userpassword().length; i++){
+      this.validateForm.get('password'+i).valueChanges.subscribe((passwords: string[]) => {
+        this.joinedPassword = passwords.join('');
+      });
+    }
+  }
 
   submitForm(): void {
     const userName = this.validateForm.get('userName').value;
     const password = this.validateForm.get('password').value;
     const foundUser = this.users.find(user => user.userName === userName && user.password === this.joinedPassword);
+
+
+    this.concatenatedPassword(); // Call the function here
+
+    console.log(this.concatenatedPassword);
+    console.log(password);
 
     if (this.validateForm.valid && foundUser) {
       console.log('submit', this.validateForm.value);
@@ -82,12 +96,6 @@ export class LoginComponent {
       remember: [true]
     });
 
-  }
-
-  concatenatedPassword(): void {
-    this.validateForm.get('password').valueChanges.subscribe((passwords: string[]) => {
-      this.joinedPassword = passwords.join('');
-    });
   }
 
 

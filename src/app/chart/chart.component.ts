@@ -39,7 +39,7 @@ export class ChartComponent {
         ]
       },
       options: {
-        aspectRatio:2.5
+        aspectRatio:4
       }
       
     });

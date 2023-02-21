@@ -32,7 +32,7 @@
                 <nz-form-control required nzHasFeedback [nzSm]="14" [nzXs]="24" [nzErrorTip]="combineTp2">
                     <nz-space nzDirection="vertical" style="width: 100%">
                         <nz-input-number-group required  nzPrefix="€" style="width: 100%">
-                            <nz-input-number  formControlName="amount" [nzStep]="1" required></nz-input-number>
+                            <nz-input-number formControlName="amount" [nzStep]="1" required></nz-input-number>
                         </nz-input-number-group>
                     </nz-space>
                     <ng-template #combineTp2 let-control>

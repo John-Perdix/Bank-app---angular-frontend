@@ -94,6 +94,9 @@ export class TransactionsComponent implements OnInit {
     console.log('deleteTransaction was called');
   }
 
+  pageSize = 5;
+  currentPage = 1;
+
 
   //MODAL
   isVisible = false;
