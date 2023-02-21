@@ -2,7 +2,7 @@
     <div class="login" nz-col [nzSpan]="8">
         <img class="logo" alt="Logo" src="../../assets/logo_black.png">
         <h1>Enter your</h1>
-        <form nz-form [formGroup]="validateForm" class="login-form" onsubmit="concatenatedPassword()" (ngSubmit)="submitForm()">
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
             <!-- USERNAME -->
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your username!">
@@ -22,7 +22,8 @@
                             [disabled]="idx >= userpassword().length / 2 ? true : false"
                             (keyup)="onDigitInput($event)"
                             type="password" nz-input
-                            formControlName="password" placeholder="*" maxlength="1"
+                            placeholder="*" maxlength="1"
+                            formControlName="{{'password'+idx}}"
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                         </div>
 

@@ -12,8 +12,7 @@ nz-avatar {
   }
 
   .label{
-    margin-top: -15px;
-    margin-bottom: 30px;
+    padding-top: 25px;
     color: #727272;
   }
 
@@ -24,10 +23,24 @@ nz-avatar {
 
   .profile{
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: left;
+  }
+
+  .profile-item2{
+    width: 100%;
+    height: 100%;
+
+    margin-left: 2em;
+    margin-bottom: 0;
   }
 
   .profile-item{
+    height: 100%;
+
     margin: auto;
+    margin-bottom: 0;
     padding: 1em;
 
     text-align: center;
@@ -42,10 +55,12 @@ nz-avatar {
   .card-profile{
     display: flex;
     width: 100%;
+    height: 100%;
   }
 
   .card-profile{
-    background: #ECECEC;padding:30px;
+    background: #ECECEC;
+    padding:30px;
   }
 
   nz-card{
@@ -100,6 +115,40 @@ nz-avatar {
     fill: #1890ff;
   }
 
-/*   .slick-track{
+  .cards{
+    display: flex;
+    justify-content: space-between;
+  }
 
-  } */
+  .big_icon{
+    font-size: 2em;
+    color: #1890ff;
+  }
+
+  .header_chart{
+    font-weight: 400 ;
+    font-size: 1.5em;
+    color: #727272;
+
+
+    padding-top: 1em;
+    padding-left: 1em;
+  }
+
+  .chart{
+    margin-top: 2em;
+    margin-bottom: 0;
+    padding: 1em;
+    background-color: #fff;
+  }
+
+  .planing{
+    text-align: left;
+    border-top: solid #ECECEC 1px;
+    padding: 1em;
+    margin-bottom: 1.5em;
+  }
+
+  .card_buttons{
+    margin-top: 5em;
+  }

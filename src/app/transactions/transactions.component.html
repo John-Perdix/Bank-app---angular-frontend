@@ -7,7 +7,7 @@ nzBackIcon
 <ng-template #titleHeader><fa-icon [icon]="faMoneyBillTransfer"></fa-icon> Transactions</ng-template>
 
 <div class="inner-content">
-    <nz-table #basicTable [nzData]="transactions">
+    <nz-table #basicTable [nzData]="transactions"  [nzPageIndex]="currentPage" [nzPageSize]="pageSize" [nzTotal]="transactions.length" (nzPageIndexChange)="currentPage = $event">
         <thead>
             <tr>
                 <th>Name</th>
@@ -20,7 +20,7 @@ nzBackIcon
             </tr>
         </thead><!-- *ngFor="let transaction of transactions.slice(0, 5);" -->
         <tbody>
-            <tr class="all_items" *ngFor="let transaction of transactions">
+            <tr class="all_items" *ngFor="let transaction of transactions.slice((currentPage - 1) * pageSize, currentPage * pageSize)">
                 <td>{{ transaction.name }}</td>
                 <td>{{ transaction.account }}</td>
                 <td>{{ transaction.amount }} €</td>
@@ -37,6 +37,7 @@ nzBackIcon
                       </button>
                       <nz-modal
                         [(nzVisible)]="isVisible"
+                        nzMask="false"
                         [nzTitle]="modalTitle"
                         [nzContent]="modalContent"
                         [nzFooter]="modalFooter"

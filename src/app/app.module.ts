@@ -27,6 +27,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -99,13 +100,13 @@ import { TRANSACTIONS_SERVICE, TransactionsServiceService } from './Services/tra
     NzPopoverModule,
     NzModalModule,
     NzCarouselModule,
-    NzStatisticModule
+    NzStatisticModule,
+    NzProgressModule
   ],
   providers: [{ provide: NZ_I18N, 
     useValue: en_US},
-    {
-    provide: TRANSACTIONS_SERVICE,
-    useClass:  TransactionsServiceService}],
+    
+    TransactionsServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
