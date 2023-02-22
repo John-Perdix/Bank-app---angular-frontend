@@ -152,3 +152,15 @@ nz-avatar {
   .card_buttons{
     margin-top: 5em;
   }
+
+  .cards{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .card-body{
+    width: calc(100%);
+  }
+
+ 
