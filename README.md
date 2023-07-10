@@ -1,4 +1,4 @@
-# Frontend- bank app in angular.js
+# DivBanking- Frontend- bank app in angular.js
 
 
 
